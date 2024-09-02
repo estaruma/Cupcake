@@ -9,14 +9,16 @@ public class Toppings extends Cake {
         this.baseCake = baseCake;
     }
 
+    // gets full name with toppings
+
     @Override
     public String getName() {
-        return baseCake.getName();
+        return super.getName();
     }
 
     @Override
     public double getPrice() {
-        return baseCake.getPrice();
+        return super.getPrice();
     }
 
 
