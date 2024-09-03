@@ -1,8 +1,9 @@
-package org.example;
+package estaruma.cupcake;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
-// applies discount
 public class Bundle extends Cake {
 
     private List<Cake> cakes;
@@ -13,19 +14,20 @@ public class Bundle extends Cake {
     }
 
     private static double calculateBundlePrice(List<Cake> cakes) {
-        double totalPrice = 0;
+        BigDecimal totalPrice = BigDecimal.ZERO;
         for (Cake cake : cakes) {
-            totalPrice += cake.getPrice();
+            totalPrice = totalPrice.add(BigDecimal.valueOf(cake.getPrice()));
         }
-        // 10% discount
-        return totalPrice * 0.9;
+        // Apply rounding before summing and discount
+        totalPrice = totalPrice.setScale(2, RoundingMode.HALF_UP);
+        // 10%
+        totalPrice = totalPrice.multiply(BigDecimal.valueOf(0.9));
+        return totalPrice.setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
-    // generater the bundle name
     private static String generateBundleName(List<Cake> cakes) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Cake cake : cakes) {
-            // seperate with commas
             stringBuilder.append(cake.getName()).append(", ");
         }
         return stringBuilder.toString().replaceAll(", $", "");
