@@ -1,4 +1,4 @@
-package org.example;
+package estaruma.cupcake;
 
 // basic cupcake
 public class Cupcake extends Cake {

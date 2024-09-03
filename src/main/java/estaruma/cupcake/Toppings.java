@@ -1,4 +1,5 @@
-package org.example;
+package estaruma.cupcake;
+
 
 // allow toppings
 public class Toppings extends Cake {

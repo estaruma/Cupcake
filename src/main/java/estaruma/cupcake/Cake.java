@@ -1,4 +1,4 @@
-package org.example;
+package estaruma.cupcake;
 
 // base for all cakes and toppings
 public class Cake {

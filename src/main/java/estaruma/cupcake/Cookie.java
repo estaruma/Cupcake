@@ -1,4 +1,4 @@
-package org.example;
+package estaruma.cupcake;
 
 // cookies
 public class Cookie extends Cake {
