@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class BundleTest {
     @Test
     void testCakeWithMultipleToppings() {
-        Cake cupcake = new Cupcake();
-        Cake chocolateCupcake = new Toppings(cupcake, "🍫", 0.10);
-        Cake nutsChocolateCupcake = new Toppings(chocolateCupcake, "🥜", 0.10);
+        BakeryItem cupcake = new Cupcake();
+        BakeryItem chocolateCupcake = new Toppings(cupcake, "🍫", 0.10);
+        BakeryItem nutsChocolateCupcake = new Toppings(chocolateCupcake, "🥜", 0.10);
 
         assertEquals("🧁 with 🍫 with 🥜", nutsChocolateCupcake.getName());
         assertEquals(1.20, nutsChocolateCupcake.getPrice(), 0.001);
@@ -17,12 +17,12 @@ class BundleTest {
 
     @Test
     void testBundleOfCakes() {
-        Cake cupcake = new Cupcake();
-        Cake chocolateCupcake = new Toppings(cupcake, "🍫", 0.10);
-        Cake nutsChocolateCupcake = new Toppings(chocolateCupcake, "🥜", 0.10);
-        Cake cookie = new Cookie();
+        BakeryItem cupcake = new Cupcake();
+        BakeryItem chocolateCupcake = new Toppings(cupcake, "🍫", 0.10);
+        BakeryItem nutsChocolateCupcake = new Toppings(chocolateCupcake, "🥜", 0.10);
+        BakeryItem cookie = new Cookie();
 
-        Cake bundle = new Bundle(List.of(nutsChocolateCupcake, cookie));
+        BakeryItem bundle = new Bundle(List.of(nutsChocolateCupcake, cookie));
 
         assertEquals("🧁 with 🍫 with 🥜, 🍪", bundle.getName());
         assertEquals(2.88, bundle.getPrice(), 0.001);
@@ -30,17 +30,17 @@ class BundleTest {
 
     @Test
     void testLargeBundleWithMultipleItems() {
-        Cake cupcake1 = new Cupcake();
-        Cake cupcake2 = new Cupcake();
-        Cake cookie = new Cookie();
+        BakeryItem cupcake1 = new Cupcake();
+        BakeryItem cupcake2 = new Cupcake();
+        BakeryItem cookie = new Cookie();
 
-        Cake chocolateCupcake1 = new Toppings(cupcake1, "🍫", 0.10);
-        Cake chocolateCupcake2 = new Toppings(cupcake2, "🍫", 0.10);
+        BakeryItem chocolateCupcake1 = new Toppings(cupcake1, "🍫", 0.10);
+        BakeryItem chocolateCupcake2 = new Toppings(cupcake2, "🍫", 0.10);
 
-        Cake nutsChocolateCupcake1 = new Toppings(chocolateCupcake1, "🥜", 0.10);
-        Cake nutsChocolateCupcake2 = new Toppings(chocolateCupcake2, "🥜", 0.10);
+        BakeryItem nutsChocolateCupcake1 = new Toppings(chocolateCupcake1, "🥜", 0.10);
+        BakeryItem nutsChocolateCupcake2 = new Toppings(chocolateCupcake2, "🥜", 0.10);
 
-        Cake largeBundle = new Bundle(List.of(nutsChocolateCupcake1, nutsChocolateCupcake2, cookie));
+        BakeryItem largeBundle = new Bundle(List.of(nutsChocolateCupcake1, nutsChocolateCupcake2, cookie));
 
         assertEquals("🧁 with 🍫 with 🥜, 🧁 with 🍫 with 🥜, 🍪", largeBundle.getName());
 
@@ -49,17 +49,17 @@ class BundleTest {
 
     @Test
     void testNestedBundleDiscounts() {
-        Cake cupcake1 = new Cupcake();
-        Cake cupcake2 = new Cupcake();
-        Cake cookie = new Cookie();
+        BakeryItem cupcake1 = new Cupcake();
+        BakeryItem cupcake2 = new Cupcake();
+        BakeryItem cookie = new Cookie();
 
-        Cake chocolateCupcake1 = new Toppings(cupcake1, "🍫", 0.10);
-        Cake nutsChocolateCupcake1 = new Toppings(chocolateCupcake1, "🥜", 0.10);
+        BakeryItem chocolateCupcake1 = new Toppings(cupcake1, "🍫", 0.10);
+        BakeryItem nutsChocolateCupcake1 = new Toppings(chocolateCupcake1, "🥜", 0.10);
 
-        Cake bundle1 = new Bundle(List.of(nutsChocolateCupcake1, cookie));
+        BakeryItem bundle1 = new Bundle(List.of(nutsChocolateCupcake1, cookie));
 
-        Cake plainCupcake = new Cupcake();
-        Cake bundle2 = new Bundle(List.of(bundle1, plainCupcake)); // Nested bundle
+        BakeryItem plainCupcake = new Cupcake();
+        BakeryItem bundle2 = new Bundle(List.of(bundle1, plainCupcake)); // Nested bundle
 
         String expectedName = "🧁 with 🍫 with 🥜, 🍪, 🧁";
         assertEquals(expectedName, bundle2.getName());
@@ -71,7 +71,7 @@ class BundleTest {
 
     @Test
     void testEmptyBundle() {
-        Cake emptyBundle = new Bundle(List.of());
+        BakeryItem emptyBundle = new Bundle(List.of());
 
         assertEquals("", emptyBundle.getName());
 
@@ -81,10 +81,10 @@ class BundleTest {
 
     @Test
     void testMultipleToppings() {
-        Cake cupcake = new Cupcake();
-        Cake chocolateCupcake = new Toppings(cupcake, "🍫", 0.10);
-        Cake nutsChocolateCupcake = new Toppings(chocolateCupcake, "🥜", 0.10);
-        Cake sprinklesNutsChocolateCupcake = new Toppings(nutsChocolateCupcake, "✨", 0.05);
+        BakeryItem cupcake = new Cupcake();
+        BakeryItem chocolateCupcake = new Toppings(cupcake, "🍫", 0.10);
+        BakeryItem nutsChocolateCupcake = new Toppings(chocolateCupcake, "🥜", 0.10);
+        BakeryItem sprinklesNutsChocolateCupcake = new Toppings(nutsChocolateCupcake, "✨", 0.05);
 
         assertEquals("🧁 with 🍫 with 🥜 with ✨", sprinklesNutsChocolateCupcake.getName());
 

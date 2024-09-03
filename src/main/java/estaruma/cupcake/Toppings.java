@@ -2,10 +2,10 @@ package estaruma.cupcake;
 
 
 // allow toppings
-public class Toppings extends Cake {
-    private Cake baseCake;
+public class Toppings extends BakeryItem {
+    private BakeryItem baseCake;
 
-    public Toppings (Cake baseCake, String topping, double toppingPrice){
+    public Toppings (BakeryItem baseCake, String topping, double toppingPrice){
         super(baseCake.getName() + " with " + topping, baseCake.getPrice() + toppingPrice);
         this.baseCake = baseCake;
     }
